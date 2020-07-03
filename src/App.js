@@ -4,6 +4,7 @@ import {Cards, Chart, CountryPicker }  from './components';
 import styles from "./App.module.css";
 import {fetchData} from './api';
 import coronaImage from './images/image.png';
+import NavBar from './components/NavBar';
 
 export default class App extends Component {
 
@@ -29,13 +30,16 @@ export default class App extends Component {
   render() {
     const { data, country } = this.state;
     return (
-      <div className = {styles.container}>
-        <img className={styles.image} src= {coronaImage} alt= "COVID-19" />
-        <Cards data = {data} />
-        <CountryPicker handleCountryChange= {this.handleCountryChange} /> 
-        <Chart data ={data} country= {country} />
+      <>
+        <NavBar />
+        <div className = {styles.container}>
+          <img className={styles.image} src= {coronaImage} alt= "COVID-19" />
+          <Cards data = {data} />
+          <CountryPicker handleCountryChange= {this.handleCountryChange} /> 
+          <Chart data ={data} country= {country} />
 
-      </div>
+        </div>
+      </>
     )
   }
 }
